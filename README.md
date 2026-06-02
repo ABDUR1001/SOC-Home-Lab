@@ -2,19 +2,50 @@
 
 ## Overview
 
-This project demonstrates the design, deployment, and operation of a Security Operations Center (SOC) Home Lab using Splunk Enterprise, Windows 10, Kali Linux, and Ubuntu. The objective was to simulate a real-world SOC environment for log collection, threat detection, alerting, and incident investigation.
+This project demonstrates the design, deployment, and operation of a Security Operations Center (SOC) Home Lab using Splunk Enterprise, Windows 10, Kali Linux, Ubuntu, and Oracle VirtualBox.
 
-The lab was built entirely in a controlled virtual environment using Oracle VirtualBox and was designed to replicate common SOC analyst workflows, including monitoring security events, detecting malicious activity, and investigating alerts.
+The objective was to simulate a real-world SOC environment for centralized log collection, threat detection, alerting, and incident investigation. The lab was built within a controlled virtual environment to replicate common SOC analyst workflows, including monitoring security events, detecting malicious activity, generating alerts, and investigating incidents.
 
 ---
 
 ## Objectives
 
-* Build a functional SOC environment using free and open-source tools.
+* Build a functional SOC environment using industry-relevant tools.
 * Configure centralized log collection and analysis.
 * Simulate realistic cyber attacks in a safe lab environment.
-* Create detection rules and alerts in Splunk.
+* Develop custom detection rules and alerts in Splunk.
 * Practice incident investigation and response workflows.
+
+---
+
+## Tools & Technologies
+
+* Splunk Enterprise
+* Splunk Universal Forwarder
+* Ubuntu 22.04 LTS
+* Windows 10 Pro
+* Kali Linux
+* Oracle VirtualBox
+* Windows Event Logs
+* Nmap
+* Hydra
+
+---
+
+## Skills Demonstrated
+
+* SIEM Operations
+* Splunk Administration
+* Log Management
+* Threat Detection
+* Security Monitoring
+* Alert Configuration
+* Alert Tuning
+* Incident Response
+* Detection Engineering
+* Network Security
+* Windows Event Analysis
+* SOC Analyst Workflows
 
 ---
 
@@ -28,28 +59,37 @@ The lab was built entirely in a controlled virtual environment using Oracle Virt
 | Windows10-Victim | Target & Log Source | 192.168.56.20 |
 | Kali-Attacker    | Attack Simulation   | 192.168.56.30 |
 
-### Technologies
+### Architecture Diagram
 
-* Splunk Enterprise
-* Splunk Universal Forwarder
-* Ubuntu 22.04 LTS
-* Windows 10 Pro
-* Kali Linux
-* Oracle VirtualBox
-* Windows Event Logs
+![Architecture](images/architecture.png)
+
+---
+
+## Log Collection & Forwarding
+
+Windows Event Logs were forwarded from the Windows machine to Splunk Enterprise using Splunk Universal Forwarder, enabling centralized monitoring and analysis.
+
+### Windows Splunk Universal Forwarder
+
+![Windows Forwarder](images/windows-splunk-forwarder.png)
+
+### Splunk Receiver Configuration
+
+![Splunk Receiver](images/splunk-receiver-config.png)
 
 ---
 
 ## Project Workflow
 
-1. Configure an isolated VirtualBox network.
+1. Configure an isolated VirtualBox Host-Only Network.
 2. Deploy Ubuntu, Windows, and Kali virtual machines.
 3. Install and configure Splunk Enterprise.
 4. Configure Splunk Universal Forwarder on Windows.
 5. Forward Windows Event Logs to Splunk.
 6. Simulate attacks from Kali Linux.
-7. Create detection queries and alerts.
-8. Investigate security events using Splunk.
+7. Develop SPL detection queries.
+8. Configure automated alerts.
+9. Investigate detected security events.
 
 ---
 
@@ -63,17 +103,27 @@ Performed network reconnaissance and service enumeration against the target syst
 
 * Network activity monitoring
 * Windows Firewall event analysis
-* Splunk search queries
+* Custom Splunk detection queries
+
+### Detection Results
+
+![Nmap Detection](images/nmap-detection.png)
+
+---
 
 ### Hydra RDP Brute Force Attack
 
-Simulated password guessing attempts against the Windows RDP service.
+Simulated repeated password guessing attempts against the Windows RDP service.
 
 **Detection Method**
 
-* Windows Event ID 4625
-* Failed authentication monitoring
+* Windows Event ID 4625 monitoring
+* Failed authentication analysis
 * Automated Splunk alert generation
+
+### Detection Results
+
+![Bruteforce Detection](images/bruteforce-detection.png)
 
 ---
 
@@ -90,6 +140,16 @@ Alerts were configured to automatically notify the analyst when predefined thres
 
 ---
 
+## Alerting & Monitoring
+
+Automated alerts were configured in Splunk to identify and respond to suspicious activity in real time.
+
+### Triggered Alert Evidence
+
+![Triggered Alert](images/triggered-alert.png)
+
+---
+
 ## Incident Investigation
 
 For each detected attack:
@@ -100,35 +160,32 @@ For each detected attack:
 * Attack timelines were reconstructed.
 * Appropriate response actions were documented.
 
----
+### Investigation Workflow
 
-## Skills Demonstrated
-
-* SIEM Operations
-* Splunk Administration
-* Log Management
-* Threat Detection
-* Security Monitoring
-* Alert Tuning
-* Incident Response
-* Network Security
-* Windows Event Analysis
-* SOC Analyst Workflows
+![Incident Investigation](images/incident-investigation.png)
 
 ---
 
 ## Key Learning Outcomes
 
-* Understanding of SOC operations and monitoring processes.
+* Understanding SOC operations and monitoring processes.
 * Hands-on experience with Splunk SIEM.
 * Real-time log collection and analysis.
 * Detection engineering using SPL queries.
 * Investigation of simulated cyber attacks.
 * Practical exposure to incident response procedures.
+* Experience with SIEM-based threat detection workflows.
+
+---
+
+## Project Documentation
+
+📄 Full project documentation is available in:
+
+**SOC_HomeLab_Report.pdf**
 
 ---
 
 ## Disclaimer
 
 All activities documented in this project were conducted within a controlled and isolated laboratory environment for educational purposes only. No third-party systems, production environments, or external networks were targeted.
-
